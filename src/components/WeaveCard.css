@@ -1,0 +1,118 @@
+.wc {
+  background: var(--card, #fff);
+  border: 1px solid var(--hairline, #ece5db);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin: 14px 0 2px;
+  box-shadow: 0 8px 24px rgba(96, 78, 55, 0.06);
+  animation: fade var(--dur-2) var(--ease-out);
+}
+/* leaving: fold away quietly, and never swallow a tap on the way out */
+.wc.is-out {
+  animation: wc-out var(--dur-2) var(--ease-out) both;
+  pointer-events: none;
+}
+@keyframes wc-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+.wc-kicker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--muted, #8c8378);
+}
+.wc-headline {
+  margin-top: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink, #2a2622);
+}
+.wc-prompt {
+  margin-top: 3px;
+  font-size: 12.5px;
+  color: var(--muted, #8c8378);
+}
+.wc-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+/* warmth rings stay the only color on the card */
+.wc-people {
+  display: flex;
+}
+.wc-people > * + * {
+  margin-left: -7px;
+}
+.wc-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+.wc-later {
+  background: none;
+  border: 0;
+  color: var(--muted, #8c8378);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 9px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease-out);
+}
+.wc-later:hover {
+  color: #4a453d;
+}
+.wc-later:active {
+  transform: scale(0.97);
+}
+.wc-act {
+  background: #fff;
+  border: 1px solid #e7dfd3;
+  color: #4a453d;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 9px 13px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
+}
+.wc-act:hover {
+  border-color: #d9cfc0;
+}
+.wc-act:active {
+  transform: scale(0.97);
+}
+.wc-later:focus-visible,
+.wc-act:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wc {
+    animation: none;
+  }
+  .wc.is-out {
+    animation: none;
+    display: none;
+  }
+  .wc-later,
+  .wc-act {
+    transition: none;
+  }
+}

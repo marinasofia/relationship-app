@@ -1,0 +1,176 @@
+.live {
+  padding: 56px 20px 20px;
+  overflow-y: auto;
+}
+.live::-webkit-scrollbar {
+  display: none;
+}
+.live-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ghost {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color var(--dur-1) var(--ease-out);
+}
+.ghost:hover {
+  color: #6e655a;
+}
+.ghost:active {
+  transform: scale(0.97);
+}
+.live-dot {
+  color: var(--ember-deep);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.live-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 14px;
+  letter-spacing: -0.3px;
+}
+.live-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12.5px;
+  margin-top: 5px;
+}
+.prog {
+  height: 6px;
+  background: #ede5d8;
+  border-radius: 999px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--ember), var(--ember-deep));
+  border-radius: 999px;
+  /* soft ember glow while the event is live */
+  box-shadow: 0 0 10px rgba(240, 179, 106, 0.55);
+  animation: ember-glow 2.6s var(--ease-in-out) infinite;
+}
+@keyframes ember-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 6px rgba(240, 179, 106, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 14px rgba(240, 179, 106, 0.75);
+  }
+}
+.nudge {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #fbeedd, #f8e3ce);
+  border: 1px solid #f1d7b8;
+  color: #7a4e24;
+  border-radius: 16px;
+  padding: 13px;
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.45;
+  animation: nudge-rise var(--dur-3) var(--ease-out);
+}
+.nudge.is-out {
+  animation: nudge-fall var(--dur-2) var(--ease-out) both;
+}
+@keyframes nudge-fall {
+  to {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+@keyframes nudge-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.nudge b {
+  color: #c46a2e;
+}
+.cap-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #a79e92;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 20px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.count {
+  background: var(--ember);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 11px;
+  padding: 1px 8px;
+  letter-spacing: 0;
+}
+.cap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.empty {
+  color: #b3aa9c;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 4px 2px;
+}
+.crow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: #fff;
+  border: 1px solid #f0e9de;
+  border-radius: 14px;
+  padding: 10px 12px;
+  animation: fade var(--dur-2) var(--ease-out);
+}
+.crow-main {
+  flex: 1;
+  min-width: 0;
+}
+.crow-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+.crow-sub {
+  font-size: 11.5px;
+  color: #a79e92;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prog-fill {
+    animation: none;
+  }
+  .nudge {
+    animation: none;
+  }
+}

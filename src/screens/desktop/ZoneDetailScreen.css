@@ -1,0 +1,148 @@
+.zone-page {
+  --zone-accent: #a83b35;
+  --zone-soft: #efb2a1;
+  min-height: 100%;
+  padding: 28px 34px 40px;
+  color: #211f27;
+  background: radial-gradient(circle at 82% 4%, color-mix(in srgb, var(--zone-soft) 62%, transparent), transparent 30%), #fcf8f4;
+  animation: zone-page-enter 420ms var(--ease-out) both;
+}
+.zone-page.is-zoom-arrival { position: relative; animation: zone-focus-resolve 620ms cubic-bezier(.2,.75,.2,1) both; }
+.zone-page.is-zoom-arrival::before {
+  content: "";
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  background: var(--zone-soft);
+  pointer-events: none;
+  animation: zone-color-resolve 560ms ease-out both;
+}
+.zone-page-active { --zone-accent: #c95235; --zone-soft: #f2b58e; }
+.zone-page-drifting { --zone-accent: #dc7930; --zone-soft: #f6c77e; }
+.zone-page-dormant { --zone-accent: #c79a22; --zone-soft: #f6df91; }
+
+@keyframes zone-page-enter {
+  from { opacity: 0; transform: translateX(10px); }
+}
+@keyframes zone-focus-resolve {
+  0% { opacity: .2; transform: scale(1.035); filter: blur(4px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+@keyframes zone-color-resolve {
+  0%, 20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.zone-page-header,
+.zone-metrics,
+.zone-detail-grid { max-width: 1440px; margin-inline: auto; }
+
+.zone-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px 7px 7px;
+  border: 0;
+  border-radius: 9px;
+  color: #77717e;
+  background: transparent;
+  font: 600 11px var(--font-body);
+  cursor: pointer;
+  transition: color 180ms var(--ease-out), background 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+.zone-back:hover { color: #25212a; background: #fff; transform: translateX(-3px); }
+.zone-back:hover svg { animation: orbit-wiggle 420ms ease-in-out; }
+
+.zone-heading-row { min-height: 132px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.zone-heading-row p { margin-bottom: 6px; color: var(--zone-accent); font-size: 10px; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+.zone-heading-row h1 { font-size: clamp(42px, 5vw, 68px); line-height: .95; font-weight: 620; letter-spacing: -.065em; }
+.zone-heading-row span { display: block; margin-top: 10px; color: #79737e; font-size: 13px; }
+.zone-status-orb { width: 96px; height: 96px; position: relative; flex: none; border: 20px solid var(--zone-soft); border-radius: 50%; box-shadow: 0 14px 34px color-mix(in srgb, var(--zone-accent) 14%, transparent); }
+.is-zoom-arrival .zone-status-orb { animation: zone-orb-focus 560ms 120ms cubic-bezier(.2,.8,.25,1) both; }
+.zone-status-orb i { width: 8px; height: 8px; position: absolute; border: 2px solid #fff; border-radius: 50%; background: var(--zone-accent); box-shadow: 0 3px 8px color-mix(in srgb, var(--zone-accent) 30%, transparent); }
+.zone-status-orb i:nth-child(1) { top: -7px; left: 19px; }
+.zone-status-orb i:nth-child(2) { right: -9px; bottom: 17px; }
+.zone-status-orb i:nth-child(3) { bottom: -8px; left: 9px; }
+@keyframes zone-orb-focus {
+  0% { opacity: 0; transform: scale(1.8); filter: blur(5px); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+.zone-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+.zone-metrics article { min-height: 112px; position: relative; padding: 16px 18px; border: 1px solid color-mix(in srgb, var(--zone-accent) 18%, transparent); border-radius: 17px; background: rgba(255,255,255,.88); box-shadow: 0 12px 35px color-mix(in srgb, var(--zone-accent) 8%, transparent); }
+.is-zoom-arrival .zone-metrics article { animation: zone-card-rise 380ms cubic-bezier(.2,.8,.25,1) both; }
+.is-zoom-arrival .zone-metrics article:nth-child(1) { animation-delay: 150ms; }
+.is-zoom-arrival .zone-metrics article:nth-child(2) { animation-delay: 195ms; }
+.is-zoom-arrival .zone-metrics article:nth-child(3) { animation-delay: 240ms; }
+.is-zoom-arrival .zone-metrics article:nth-child(4) { animation-delay: 285ms; }
+@keyframes zone-card-rise {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+}
+.zone-metrics article > svg { position: absolute; top: 16px; right: 16px; color: var(--zone-accent); }
+.zone-metrics span { display: block; color: #89838e; font-size: 9px; font-weight: 650; }
+.zone-metrics strong { display: block; margin-top: 9px; font-size: 29px; font-weight: 620; letter-spacing: -.045em; }
+.zone-metrics small { display: block; margin-top: 4px; color: #9b95a0; font-size: 9px; }
+
+.zone-detail-grid { display: grid; grid-template-columns: minmax(620px, 1fr) 310px; gap: 18px; align-items: start; }
+.zone-people-panel,
+.zone-side-panel > section { border: 1px solid color-mix(in srgb, var(--zone-accent) 15%, transparent); border-radius: 20px; background: rgba(255,255,255,.88); box-shadow: 0 16px 44px color-mix(in srgb, var(--zone-accent) 7%, transparent); }
+.zone-people-panel { overflow: hidden; }
+.zone-panel-heading { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 17px 12px 20px; }
+.zone-panel-heading h2 { font-size: 14px; font-weight: 700; letter-spacing: -.02em; }
+.zone-panel-heading p { margin-top: 4px; color: #96909b; font-size: 9px; }
+.zone-search { width: 210px; height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 10px; border: 1px solid rgba(39, 31, 49, .08); border-radius: 10px; color: #aaa4ae; background: #f8f7f9; }
+.zone-search input { min-width: 0; flex: 1; border: 0; outline: 0; color: #302c34; background: transparent; font: 500 10px var(--font-body); }
+.zone-search input::placeholder { color: #aaa4ae; }
+
+.zone-table-head,
+.zone-person-list button { display: grid; grid-template-columns: minmax(250px, 1.7fr) 110px 110px 70px; align-items: center; gap: 14px; }
+.zone-table-head { height: 30px; padding: 0 18px 0 20px; border-block: 1px solid rgba(40, 32, 50, .055); color: #a19ba5; background: #faf9fb; font-size: 8px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.zone-person-list { max-height: calc(100vh - 390px); min-height: 250px; overflow: auto; }
+.zone-person-list button { width: 100%; min-height: 58px; padding: 8px 18px 8px 20px; border: 0; border-bottom: 1px solid rgba(40, 32, 50, .055); color: inherit; background: transparent; text-align: left; cursor: pointer; transition: background 170ms var(--ease-out), transform 170ms var(--ease-out); }
+.zone-person-list button:hover { background: color-mix(in srgb, var(--zone-soft) 42%, white); transform: translateX(3px); }
+.zone-person-main { min-width: 0; display: flex; align-items: center; gap: 10px; }
+.zone-person-main > i { width: 31px; height: 31px; flex: none; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--zone-accent); font-size: 8px; font-style: normal; font-weight: 750; box-shadow: 0 4px 10px color-mix(in srgb, var(--zone-accent) 24%, transparent); }
+.zone-person-list button:hover .zone-person-main > i { animation: orbit-wiggle 420ms ease-in-out; }
+.zone-person-main strong { display: block; overflow: hidden; font-size: 10.5px; font-weight: 680; text-overflow: ellipsis; white-space: nowrap; }
+.zone-person-main small { display: block; margin-top: 3px; overflow: hidden; color: #96909b; font-size: 8.5px; text-overflow: ellipsis; white-space: nowrap; }
+.zone-recency { color: #817b86; font-size: 9px; }
+.zone-warmth { display: flex; align-items: center; gap: 7px; color: #6f6974; font-size: 9px; font-variant-numeric: tabular-nums; }
+.zone-warmth > i { width: 54px; height: 3px; overflow: hidden; border-radius: 99px; background: #ece9ee; }
+.zone-warmth b { display: block; height: 100%; border-radius: inherit; background: var(--zone-accent); }
+.zone-risk { display: flex; align-items: center; justify-content: flex-end; gap: 4px; color: var(--zone-accent); font-size: 9px; font-weight: 750; font-variant-numeric: tabular-nums; }
+.zone-risk svg { opacity: 0; transform: translate(-3px, 3px); transition: opacity 170ms, transform 170ms; }
+.zone-person-list button:hover .zone-risk svg { opacity: 1; transform: translate(0); }
+.zone-no-results { padding: 45px 20px; color: #928c96; font-size: 11px; text-align: center; }
+
+.zone-side-panel { display: flex; flex-direction: column; gap: 14px; }
+.zone-side-panel > section { padding: 18px; }
+.zone-guidance { background: linear-gradient(145deg, color-mix(in srgb, var(--zone-soft) 76%, white), rgba(255,255,255,.88)) !important; }
+.zone-guidance p,
+.zone-companies > div p { color: var(--zone-accent); font-size: 9px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+.zone-guidance h2 { margin-top: 12px; font-size: 16px; line-height: 1.35; font-weight: 650; letter-spacing: -.025em; }
+.zone-guidance span,
+.zone-companies > div span { display: block; margin-top: 10px; color: #89838d; font-size: 9px; line-height: 1.5; }
+.zone-companies > div { margin-bottom: 11px; }
+.zone-companies > div span { margin-top: 3px; }
+.zone-companies button { width: 100%; min-height: 47px; display: grid; grid-template-columns: 1fr 72px; align-items: center; gap: 10px; padding: 0; border: 0; border-top: 1px solid rgba(40, 32, 50, .06); color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.zone-companies button:hover strong { color: var(--zone-accent); }
+.zone-companies strong { display: block; font-size: 10px; font-weight: 670; transition: color 160ms; }
+.zone-companies small { display: block; margin-top: 3px; color: #9a949e; font-size: 8px; }
+.zone-companies button > i { height: 3px; overflow: hidden; border-radius: 99px; background: #ece9ee; }
+.zone-companies button > i b { display: block; height: 100%; border-radius: inherit; background: var(--zone-accent); transition: width 420ms var(--ease-out); }
+
+@media (max-width: 1050px) {
+  .zone-page { padding-inline: 24px; }
+  .zone-detail-grid { grid-template-columns: 1fr 270px; }
+  .zone-table-head,
+  .zone-person-list button { grid-template-columns: minmax(210px, 1.5fr) 100px 95px 62px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zone-page { animation: none; }
+  .zone-page.is-zoom-arrival::before,
+  .is-zoom-arrival .zone-status-orb,
+  .is-zoom-arrival .zone-metrics article { animation: none; }
+  .zone-back:hover svg,
+  .zone-person-list button:hover .zone-person-main > i { animation: none; }
+}

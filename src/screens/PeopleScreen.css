@@ -1,0 +1,233 @@
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #ece4d9;
+  border-radius: 14px;
+  padding: 11px 13px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+.searchbar:focus-within {
+  box-shadow: var(--ring);
+  border-color: var(--ember);
+}
+.search-input {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+}
+.search-input::placeholder {
+  color: #a79e92;
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 6px;
+  flex-wrap: wrap;
+}
+.chip {
+  border: 1px solid #e7dfd3;
+  background: #fff;
+  color: #6e655a;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 7px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
+}
+.chip:active {
+  transform: scale(0.96);
+}
+.chip.on {
+  background: var(--ink);
+  color: #f6efe4;
+  border-color: var(--ink);
+}
+.chip:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+/* quiet sort control, right of the filter chips */
+.sort-select {
+  margin-left: auto;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #e7dfd3;
+  background:
+    url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23a79e92' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    right 11px center no-repeat #fff;
+  color: #6e655a;
+  font-size: 12.5px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 7px 28px 7px 13px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+.sort-select:hover {
+  border-color: #d9cfc0;
+}
+.sort-select:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+.prow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #f0e9de;
+  border-radius: var(--r-row);
+  padding: 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  box-shadow: var(--shadow-row);
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+.prow:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
+}
+.prow:active {
+  transform: scale(0.995);
+}
+.prow:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+.prow-main {
+  flex: 1;
+  min-width: 0;
+}
+.prow-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+.prow-sub {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+.prow-met {
+  font-size: 11.5px;
+  color: #b3aa9c;
+  margin-top: 3px;
+}
+.warm-tag {
+  font-size: 11.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  align-self: flex-start;
+  transition: filter var(--dur-1) var(--ease-out);
+}
+.prow:hover .warm-tag {
+  filter: brightness(1.15) saturate(1.15);
+}
+
+/* the list settles in with one soft fade whenever its order changes */
+.plist {
+  animation: fade var(--dur-2) var(--ease-out);
+}
+
+.people-empty {
+  color: #b3aa9c;
+  font-size: 13.5px;
+  line-height: 1.5;
+  padding: 20px 2px;
+}
+
+/* header row with the quiet settings entry and the add pill */
+.people-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.people-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.add-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #f0d9c4;
+  background: #fdf3e9;
+  color: var(--ember-deep);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 8px 13px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+.add-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-row);
+}
+.add-pill:active {
+  transform: translateY(0) scale(0.97);
+}
+.add-pill:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+.gear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--card);
+  color: #a79e92;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color var(--dur-1) var(--ease-out);
+}
+.gear:hover {
+  color: #6e655a;
+}
+.gear:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prow,
+  .add-pill {
+    transition: none;
+  }
+  .prow:hover,
+  .add-pill:hover {
+    transform: none;
+  }
+}

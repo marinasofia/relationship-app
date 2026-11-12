@@ -1,0 +1,292 @@
+/* The company story panel: arrives after the camera lands, reads like a
+   field report on your standing at one company. */
+
+.company-panel {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  width: 348px;
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 22px;
+  box-shadow: var(--shadow-pop), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  padding: 20px 20px 16px;
+  z-index: 20;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  opacity: 0;
+  transform: translateX(14px);
+  animation: cp-in var(--dur-3) var(--ease-out) 320ms forwards;
+}
+@keyframes cp-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* leaving with the camera: the report slides back out as the world flies home */
+.company-panel.is-out {
+  animation: cp-out var(--dur-2) var(--ease-out) 0ms both;
+  pointer-events: none;
+}
+@keyframes cp-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+}
+
+.cp-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+.cp-close:hover {
+  color: var(--ink);
+  border-color: #d9c9b4;
+}
+
+.cp-kicker {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cp-name {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  margin: 2px 0 0;
+  color: var(--teal);
+}
+.cp-sub {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 2px 0 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* warmth composition */
+.cp-bands {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+.cp-band {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.cp-band-label {
+  width: 68px;
+}
+.cp-band-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: #f2ece2;
+  overflow: hidden;
+}
+.cp-band-track i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  transform-origin: left;
+  animation: cp-grow var(--dur-3) var(--ease-out) 480ms backwards;
+}
+@keyframes cp-grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+.cp-band-n {
+  width: 16px;
+  text-align: right;
+}
+
+/* stat rows */
+.cp-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--r-block);
+  background: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--dur-1), border-color var(--dur-1);
+}
+.cp-row:hover {
+  background: #fdf9f3;
+  border-color: var(--hairline);
+}
+.cp-row-static {
+  cursor: default;
+}
+.cp-row-static:hover {
+  background: none;
+  border-color: transparent;
+}
+.cp-row-icon {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.cp-warmicon {
+  color: var(--ember);
+}
+.cp-coldicon {
+  color: #6f8aa8;
+}
+.cp-row-label {
+  font-size: 11.5px;
+  color: var(--muted);
+  width: 92px;
+  flex-shrink: 0;
+}
+.cp-row-value {
+  flex: 1;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.cp-row-wrap {
+  align-items: flex-start;
+}
+.cp-events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.cp-events em {
+  font-style: normal;
+  font-size: 11.5px;
+  color: #6e655a;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+/* members, cascade in after the camera lands */
+.cp-people {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cp-person {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border: 0;
+  border-radius: var(--r-block);
+  background: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  opacity: 0;
+  animation: cp-in var(--dur-2) var(--ease-out) forwards;
+  transition: background var(--dur-1);
+}
+.cp-person:hover {
+  background: #fdf9f3;
+}
+.cp-person-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.cp-person-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cp-person-role {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cp-person-band {
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+/* the reserved stage for live openings */
+.cp-openings {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline);
+}
+.cp-openings p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 6px 0 8px;
+  line-height: 1.5;
+}
+.cp-soon {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--teal);
+  background: rgba(47, 126, 118, 0.08);
+  border: 1px solid rgba(47, 126, 118, 0.28);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .company-panel,
+  .cp-person {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .cp-band-track i {
+    animation: none;
+  }
+  .company-panel.is-out {
+    display: none;
+  }
+}

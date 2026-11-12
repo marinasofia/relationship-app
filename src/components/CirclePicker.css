@@ -1,0 +1,38 @@
+.circle-picker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0 4px;
+}
+
+.circle-chip {
+  border: 1px solid #e3d9c8;
+  background: #fffdf8;
+  color: #7a7062;
+  font: inherit;
+  font-size: 12.5px;
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.circle-chip.on {
+  background: #2f5d46;
+  border-color: #2f5d46;
+  color: #fff;
+}
+
+/* A guess reads as softer than the user's own choice. */
+.circle-chip.on.guessed {
+  background: #e8f0ea;
+  border-color: #9bb8a6;
+  border-style: dashed;
+  color: #2f5d46;
+}
+
+.circle-hint {
+  flex-basis: 100%;
+  font-size: 11.5px;
+  color: #9a907f;
+}

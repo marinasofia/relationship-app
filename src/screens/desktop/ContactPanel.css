@@ -1,0 +1,120 @@
+/* The slide-in contact card beside the memory tree. */
+
+/* a whisper of a scrim: the tree recedes, the card reads. Click to close. */
+.cpanel-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 38, 34, 0.08);
+  z-index: 15;
+  animation: cpanel-scrim-in var(--dur-3) var(--ease-out);
+}
+@keyframes cpanel-scrim-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.cpanel {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+  width: min(400px, calc(100% - 32px));
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-pop);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 20;
+  animation: cpanel-in var(--dur-3) var(--ease-out);
+}
+@keyframes cpanel-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* leaving: the card glides back toward the edge it came from */
+.cpanel.is-out {
+  animation: cpanel-out var(--dur-2) var(--ease-out) both;
+  pointer-events: none;
+}
+@keyframes cpanel-out {
+  to {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+.cpanel-scrim.is-out {
+  animation: cpanel-scrim-out var(--dur-2) var(--ease-out) both;
+  pointer-events: none;
+}
+@keyframes cpanel-scrim-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* the warmth ring draws the eye exactly once on open */
+.cpanel .detail-head .ring {
+  animation: cpanel-ring-pulse 600ms var(--ease-out) 180ms;
+}
+@keyframes cpanel-ring-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cpanel-scroll {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 26px 20px 8px;
+}
+.cpanel-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.cpanel-x {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  color: var(--muted);
+  cursor: pointer;
+  z-index: 5;
+  transition: color var(--dur-1) var(--ease-out);
+}
+.cpanel-x:hover {
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cpanel,
+  .cpanel-scrim,
+  .cpanel .detail-head .ring {
+    animation: none;
+  }
+  .cpanel.is-out,
+  .cpanel-scrim.is-out {
+    display: none;
+  }
+}

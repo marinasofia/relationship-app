@@ -1,0 +1,132 @@
+/* Onboarding: a short welcome before the demo opens. */
+
+.onb-brand-row {
+  min-height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: -8px -6px 14px 0;
+}
+.onb-brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.onb-brand-copy > span {
+  color: var(--muted);
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+}
+
+.onb-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #a79e92;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin: 18px 0 8px;
+}
+
+.onb-input {
+  width: 100%;
+  border: 1px solid var(--hairline);
+  background: var(--card);
+  border-radius: var(--r-block);
+  padding: 13px 15px;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: var(--ink);
+  outline: none;
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+.onb-input:focus {
+  border-color: rgba(45, 129, 89, 0.42);
+  box-shadow: var(--ring);
+}
+.onb-input::placeholder {
+  color: #b4ab9d;
+}
+
+.onb-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-block);
+  padding: 13px 14px;
+  margin-bottom: 10px;
+  transition: border-color var(--dur-1) var(--ease-out);
+}
+.onb-card:hover {
+  border-color: #cfded1;
+}
+.onb-card-main {
+  flex: 1;
+  min-width: 0;
+}
+.onb-card-label {
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.onb-card-detail {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+.onb-connect {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #e7dfd3;
+  background: #fff;
+  color: #6e655a;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    background var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+.onb-connect:hover {
+  border-color: #bfd4c3;
+}
+.onb-connect.on {
+  border-color: rgba(45, 129, 89, 0.32);
+  background: rgba(45, 129, 89, 0.08);
+  color: var(--teal);
+  animation: pop var(--dur-1) var(--ease-out);
+}
+
+.onb-skip-note {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.onb-sources h1 {
+  font-size: 30px;
+  letter-spacing: -1px;
+  margin-bottom: 5px;
+}
+.onb-text-action {
+  display: block;
+  margin: 10px auto 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 6px;
+}

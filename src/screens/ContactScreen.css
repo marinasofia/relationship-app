@@ -1,0 +1,339 @@
+.detail-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.dh-name {
+  font-family: var(--font-display);
+  font-size: 25px;
+  font-weight: 600;
+  margin-top: 6px;
+  letter-spacing: -0.3px;
+}
+.dh-role {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+.warm-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-top: 4px;
+}
+.wdot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+}
+.metchip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #f3ece0;
+  color: #7a7062;
+  font-size: 12.5px;
+  border-radius: 12px;
+  padding: 10px 13px;
+  margin: 14px 0 4px;
+}
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.social {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid #eee6da;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4a453d;
+  cursor: pointer;
+  font-family: inherit;
+  transition:
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+.social:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lift);
+}
+.social span {
+  color: #6e655a;
+}
+.block {
+  background: #fff;
+  border: 1px solid #f0e9de;
+  border-radius: 16px;
+  padding: 14px;
+  margin-top: 12px;
+}
+.block-h {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #a79e92;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 9px;
+}
+.note {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #3a362f;
+}
+.tl {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  color: #4a453d;
+  padding: 5px 0;
+}
+.tl-date {
+  margin-left: auto;
+  color: #b3aa9c;
+  font-size: 11.5px;
+}
+.tl-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ember);
+  flex-shrink: 0;
+}
+.tl-dot.soft {
+  background: #d9cfc0;
+}
+
+/* quiet header pencil + inline role/org editing */
+.dh-pencil {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 4px;
+  vertical-align: -5px;
+  border: 0;
+  border-radius: var(--r-pill);
+  background: none;
+  color: #c4bbad;
+  cursor: pointer;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    background var(--dur-1) var(--ease-out);
+}
+.dh-pencil:hover {
+  color: var(--ember-deep);
+  background: #f3ece0;
+}
+.dh-edit-form {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+.dh-input {
+  width: 120px;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: 6px 9px;
+  font-family: inherit;
+  font-size: 12.5px;
+  color: var(--ink);
+}
+.dh-save {
+  border: 1px solid #f0d9c4;
+  background: #fdf3e9;
+  color: var(--ember-deep);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 6px 12px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+}
+
+/* click-to-edit note */
+.note-view {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: text;
+  font-family: inherit;
+  border-radius: 8px;
+}
+.note-view .note {
+  flex: 1;
+}
+.note-pencil {
+  color: #c4bbad;
+  flex-shrink: 0;
+  margin-top: 3px;
+  opacity: 0;
+  transition: opacity var(--dur-1) var(--ease-out);
+}
+.note-view:hover .note-pencil,
+.note-view:focus-visible .note-pencil {
+  opacity: 1;
+}
+.note-empty {
+  color: #b3aa9c;
+}
+.note-edit {
+  width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  padding: 11px 12px;
+  font-family: inherit;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: #3a362f;
+  resize: none;
+}
+
+/* log a touchpoint */
+.log-open {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px 10px;
+  background: var(--paper);
+  border: 1px dashed #ddd3c4;
+  border-radius: 12px;
+  color: #8c8378;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color var(--dur-1) var(--ease-out),
+    border-color var(--dur-1) var(--ease-out);
+}
+.log-open:hover {
+  color: var(--ember-deep);
+  border-color: #f0d9c4;
+}
+.log-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  animation: slidein var(--dur-2) var(--ease-out);
+  padding: 10px;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+}
+.log-kinds {
+  display: flex;
+  gap: 6px;
+}
+.log-kind {
+  flex: 1;
+  border: 1px solid #e7dfd3;
+  background: #fff;
+  color: #6e655a;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 6px 0;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition:
+    background var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+.log-kind.on {
+  background: var(--ink);
+  color: #f6efe4;
+  border-color: var(--ink);
+}
+.log-detail {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: 9px 11px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+}
+.log-save {
+  align-self: flex-end;
+  transition:
+    background var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out);
+  border: 1px solid #f0d9c4;
+  background: #fdf3e9;
+  color: var(--ember-deep);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 7px 16px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+}
+.log-save:hover {
+  background: #fbe5d6;
+}
+.log-save:active {
+  transform: scale(0.97);
+}
+
+/* one focus ring, one placeholder color for every control on the card */
+.dh-pencil:focus-visible,
+.dh-save:focus-visible,
+.note-view:focus-visible,
+.log-open:focus-visible,
+.log-kind:focus-visible,
+.log-save:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+}
+.dh-input:focus-visible,
+.note-edit:focus-visible,
+.log-detail:focus-visible {
+  outline: none;
+  border-color: var(--ember);
+  box-shadow: var(--ring);
+}
+.dh-input::placeholder,
+.log-detail::placeholder {
+  color: #b3aa9c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-pencil,
+  .note-pencil,
+  .log-open,
+  .log-kind {
+    transition: none;
+  }
+}

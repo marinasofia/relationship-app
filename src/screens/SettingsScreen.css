@@ -1,0 +1,136 @@
+/* Settings: quiet rows, one honest destructive action. */
+.set-input {
+  width: 100%;
+  border: 1px solid var(--hairline);
+  background: var(--card);
+  border-radius: var(--r-block);
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  outline: none;
+  margin-top: 6px;
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.set-input:focus {
+  border-color: rgba(45, 129, 89, 0.42);
+  box-shadow: var(--ring);
+}
+
+.set-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-block);
+  padding: 12px 14px;
+  margin-top: 8px;
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    transform var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-1) var(--ease-out);
+}
+
+.set-row:hover {
+  border-color: #cfded1;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-card);
+}
+
+.set-row-label {
+  flex: 1;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.set-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #e7dfd3;
+  background: #fff;
+  color: #6e655a;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    border-color var(--dur-1) var(--ease-out),
+    background var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out);
+}
+
+.set-toggle:hover {
+  border-color: #d9cdba;
+}
+
+.set-toggle.on {
+  border-color: rgba(47, 126, 118, 0.35);
+  background: rgba(47, 126, 118, 0.08);
+  color: var(--teal);
+  animation: pop var(--dur-1) var(--ease-out);
+}
+
+.set-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-block);
+  padding: 12px 14px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.set-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  border: 1px solid #ecd9d2;
+  background: #fff;
+  color: #b4543a;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: var(--r-block);
+  cursor: pointer;
+  margin-top: 8px;
+  transition:
+    background var(--dur-2) var(--ease-out),
+    border-color var(--dur-2) var(--ease-out),
+    color var(--dur-2) var(--ease-out);
+}
+
+.set-delete:hover {
+  border-color: #e0c3b8;
+}
+
+/* armed: the danger breathes until you decide */
+.set-delete.armed {
+  background: #b4543a;
+  border-color: #b4543a;
+  color: #fff;
+  animation: armed-breathe 1.5s var(--ease-in-out) infinite;
+}
+
+@keyframes armed-breathe {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(180, 84, 58, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(180, 84, 58, 0);
+  }
+}

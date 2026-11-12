@@ -1,0 +1,58 @@
+.today-screen { padding: 42px 48px 64px; max-width: 1240px; margin: 0 auto; width: 100%; color: var(--ink); overflow-y: auto; }
+.today-header { margin-bottom: 38px; }
+.today-eyebrow { display: flex; align-items: center; gap: 9px; color: var(--clover-deep); font-size: 12px; letter-spacing: .09em; text-transform: uppercase; }
+.today-header h1 { font-family: var(--font-display); font-size: clamp(38px, 5vw, 56px); font-weight: 400; margin: 12px 0 9px; letter-spacing: -.045em; }
+.today-header > p { color: var(--muted); font-size: 15px; margin: 0; }
+.today-layout { display: grid; grid-template-columns: minmax(0, 1fr) 275px; gap: 36px; align-items: start; }
+.today-main { min-width: 0; }
+.today-section-heading { display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; justify-content: space-between; }
+.today-section-heading h2 { font-size: 16px; font-weight: 600; margin: 0; }
+.today-section-heading > span { color: var(--muted); font-size: 12px; }
+.today-demo-note { font-size: 12px; color: var(--muted); margin: 10px 0 0; }
+.today-actions { display: grid; gap: 16px; }
+.today-action { padding: 24px; border: 1px solid var(--hairline); border-radius: var(--r-card); background: var(--card); }
+.today-action-first { background: linear-gradient(125deg, var(--clover-soft), var(--card) 85%); border-color: #d1e2d2; }
+.today-action-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 19px; }
+.today-kind { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--clover-deep); }
+.today-number { font: 20px var(--font-display); color: var(--muted); }
+.today-person { display: flex; align-items: center; gap: 14px; }
+.today-person > div:last-child { min-width: 0; }
+.today-person h3 { font: 500 23px/1.25 var(--font-display); letter-spacing: -.025em; margin: 0; overflow-wrap: anywhere; }
+.today-person p { font-size: 12px; color: var(--muted); margin: 5px 0 0; }
+.today-event-icon { width: 46px; height: 46px; display: grid; place-items: center; background: var(--clover-soft); color: var(--clover-deep); border-radius: 14px; flex-shrink: 0; }
+.today-reason { font-size: 14px; line-height: 1.65; margin: 18px 0 9px; overflow-wrap: anywhere; }
+.today-evidence { color: var(--muted); font-size: 11px; }
+.today-action-buttons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+.today-screen button, .today-primary { cursor: pointer; font: inherit; }
+.today-action-buttons button, .today-primary, .today-preferences button, .today-error button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border-radius: var(--r-pill); padding: 10px 14px; border: 1px solid var(--hairline); background: transparent; color: var(--ink); font-size: 12px; text-decoration: none; }
+.today-action-buttons .today-primary { background: var(--clover-deep); border-color: var(--clover-deep); color: white; }
+.today-action-buttons .today-dismiss { border-color: transparent; color: var(--muted); }
+.today-action-buttons button:hover, .today-primary:hover { filter: brightness(.96); }
+.today-screen button:focus-visible, .today-screen a:focus-visible, .today-screen summary:focus-visible { outline: 2px solid var(--clover); outline-offset: 4px; }
+.today-notice { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--clover-deep); min-height: 26px; margin: 6px 0; }
+.today-notice > svg { flex-shrink: 0; }
+.today-notice button { border: 0; background: none; color: inherit; text-decoration: underline; margin-left: auto; padding: 8px; }
+.today-note { padding: 26px; background: #eef1e9; border-radius: 3px 30px 3px 3px; }
+.today-note-icon { color: var(--clover); margin-bottom: 26px; }
+.today-note h2 { font: 400 27px/1.2 var(--font-display); letter-spacing: -.03em; margin: 0 0 16px; }
+.today-note p { font-size: 13px; line-height: 1.7; color: #596356; }
+.today-note-rule { height: 1px; background: #d9dfd2; margin: 24px 0 17px; }
+.today-note > span { display: block; font-size: 11px; line-height: 1.65; color: #596356; }
+.today-links { margin-top: 22px; }
+.today-links a { display: flex; align-items: center; justify-content: space-between; padding: 15px 2px; color: var(--ink); text-decoration: none; font-size: 13px; border-bottom: 1px solid var(--hairline); }
+.today-storage-note { font-size: 11px; line-height: 1.6; color: var(--muted); margin-top: 24px; }
+.today-set-aside, .today-preferences { font-size: 12px; color: var(--muted); margin-top: 20px; line-height: 1.6; }
+.today-preferences summary { cursor: pointer; }
+.today-empty { text-align: center; padding: 52px 25px; border: 1px solid var(--hairline); border-radius: var(--r-card); background: var(--card); }
+.today-empty > svg { color: var(--clover); }
+.today-empty h3 { font: 400 28px var(--font-display); margin: 18px 0 12px; }
+.today-empty p { font-size: 14px; line-height: 1.65; color: var(--muted); max-width: 380px; margin: 0 auto 20px; }
+.today-empty a, .today-event-details a { display: inline-flex; align-items: center; gap: 8px; color: var(--clover-deep); font-size: 13px; }
+.today-event-details { border-top: 1px solid var(--hairline); padding-top: 14px; margin-top: 20px; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.today-event-details strong { display: block; font-size: 11px; color: var(--muted); font-weight: 500; }
+.today-error { margin: 18px 0; padding: 14px; border: 1px solid var(--hairline); border-radius: 12px; font-size: 13px; }
+@media (max-width: 1100px) { .today-screen { padding: 30px 26px 50px; } .today-layout { gap: 22px; grid-template-columns: minmax(0, 1fr) 240px; } }
+@media (max-width: 959px) { .today-screen { padding: 28px 20px 96px; flex: 1; min-height: 0; } .today-layout { display: block; } .today-aside { margin-top: 28px; } .today-note { display: none; } .today-header { margin-bottom: 28px; } .today-header > p { font-size: 14px; line-height: 1.6; } }
+@media (max-width: 959px) { .demo-ribbon ~ .mobile-shell .today-screen { padding-top: 96px; } }
+@media (max-width: 400px) { .today-screen { padding-left: 15px; padding-right: 15px; } .today-action { padding: 19px 16px; } .today-person h3 { font-size: 21px; } .today-action-buttons { gap: 5px; } .today-action-buttons button, .today-primary { padding: 11px 10px; } }
+@media (pointer: coarse) { .today-action-buttons button, .today-primary, .today-notice button, .today-preferences button, .today-preferences summary { min-height: 44px; } }

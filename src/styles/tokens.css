@@ -1,0 +1,57 @@
+/* Design tokens: calm surfaces, semantic warmth. */
+
+/* Fonts are bundled with the app (see main.tsx), so nothing loads from a font CDN. */
+
+:root {
+  /* surfaces */
+  --paper: #fbfaf7;
+  --backdrop: #edf1ea;
+  --card: #ffffff;
+  --hairline: #e5e9e2;
+
+  /* ink */
+  --ink: #1d201e;
+  --muted: #798078;
+
+  /* primary action: clover (legacy variable names retained for compatibility) */
+  --ember: #2d8159;
+  --ember-deep: #1f6845;
+  --ember-glow: #8fc99e;
+
+  --clover: #2d8159;
+  --clover-deep: #1f6845;
+  --clover-soft: #e7f1e7;
+  --clay-lilac: #7867d8;
+  --clay-coral: #df7d83;
+  --clay-butter: #d8ad55;
+
+  /* secondary: teal */
+  --teal: #3e8b72;
+
+  /* radii */
+  --r-row: 18px;
+  --r-card: 22px;
+  --r-block: 16px;
+  --r-pill: 999px;
+
+  /* soft warm shadows */
+  --shadow-row: 0 8px 20px -12px rgba(38, 60, 43, 0.32);
+  --shadow-card: 0 4px 18px -12px rgba(38, 60, 43, 0.28);
+  --shadow-lift: 0 12px 24px -14px rgba(38, 60, 43, 0.34);
+  --shadow-cta: 0 10px 24px -10px rgba(31, 104, 69, 0.46);
+
+  /* type */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+
+  /* motion: one tempo everywhere */
+  --dur-1: 140ms; /* micro: hovers, toggles */
+  --dur-2: 240ms; /* standard: fades, reveals */
+  --dur-3: 420ms; /* entrances, panels */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* elevation & focus */
+  --shadow-pop: 0 18px 44px -18px rgba(38, 60, 43, 0.42);
+  --ring: 0 0 0 3px rgba(45, 129, 89, 0.25);
+}
