@@ -2,7 +2,29 @@
 
 A web app for people who network a lot. It shows which contacts you are losing touch with, why, and when to follow up. This repo is a demo that runs on made-up sample contacts.
 
-<!-- Screenshot and demo GIF go here once captured from the running app. -->
+![A tour of the app: the assistant, a contact card, the orbit map, the analytics page and the events calendar](docs/tour.gif)
+
+## Screens
+
+**Analytics.** Who to focus on first, each with a plain reason, then network health and the 12 week warmth trend.
+
+![Analytics page with a ranked focus list and a network health chart](docs/analytics.png)
+
+**People.** Everyone you have met, warm to cold, with a card for each person showing where you met, your notes and your history.
+
+![People list next to a contact card for a sample contact](docs/people.png)
+
+**Orbit.** Each ring is a warmth band, from Warm in the middle to Dormant at the edge, with your biggest company clusters on the side.
+
+![Orbit map with four warmth rings and a list of top companies](docs/orbit.png)
+
+**Assistant.** A daily briefing of who to check in with and what to prepare for, plus a chat that drafts messages for you to review.
+
+![Assistant page with a chat panel and briefing cards](docs/assistant.png)
+
+**Events.** A calendar of events, with prep for the one happening now: who you know there and what to talk about.
+
+![Events calendar with a live event and its prep notes](docs/events.png)
 
 ## What it shows
 

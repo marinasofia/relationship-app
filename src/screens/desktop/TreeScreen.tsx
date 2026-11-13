@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import {
-  ArrowUpRight,
   Building2,
   CircleDot,
   Search,
@@ -9,7 +8,6 @@ import {
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useApp } from "../../state/AppContext";
 import { matchesQuery } from "../../lib/filters";
-import { daysSince } from "../../lib/dates";
 import { getCompanyIntel } from "../../services/companyIntel";
 import { getDecayRisk, meanModelScore, warmthOf } from "../../services/warmth";
 import type { Contact } from "../../types";
@@ -154,12 +152,6 @@ function fitCompanyLabel(group: CompanyGroup): { text: string; size: number } | 
   return null;
 }
 
-function dayLabel(contact: Contact): string {
-  const days = daysSince(contact.lastInteractionAt);
-  if (days === 0) return "today";
-  if (days === 1) return "yesterday";
-  return `${days}d ago`;
-}
 
 export function TreeScreen() {
   const { state } = useApp();
@@ -325,10 +317,6 @@ export function TreeScreen() {
     return new Set(state.contacts.filter((contact) => matchesQuery(contact, query)).map((contact) => contact.id));
   }, [query, state.contacts]);
 
-  const atRisk = useMemo(
-    () => positions.filter(item => item.modelScore !== null).sort((a, b) => b.modelScore! - a.modelScore!).slice(0, 5),
-    [positions],
-  );
   const focusedCompany = useMemo(() => {
     if (!hoveredCompany) return null;
     const group = companyGroups.find((item) => item.name === hoveredCompany);
@@ -636,29 +624,6 @@ export function TreeScreen() {
         </section>
 
         <aside className="orbit-insights">
-          <section className="insight-card attention-card" aria-label="Cadence signals">
-            <div className="insight-heading">
-              <div>
-                <p>Cadence signals</p>
-                <span>Highest model scores</span>
-              </div>
-              <button aria-label="View all people" onClick={() => navigate("/people")}><ArrowUpRight size={15} /></button>
-            </div>
-            <div className="attention-list">
-              {atRisk.length === 0 && <p>No model scores yet. Connect consented conversation history to assess relationship cadence.</p>}
-              {atRisk.map((item) => (
-                <button key={item.contact.id} onClick={() => setSelectedId(item.contact.id)}>
-                  <span className="attention-avatar" style={{ background: item.color }}>{item.contact.init}</span>
-                  <span className="attention-person">
-                    <strong>{item.contact.name}</strong>
-                    <small>{item.contact.org} · {dayLabel(item.contact)}</small>
-                  </span>
-                  <span className="attention-risk">{item.modelScore}/100</span>
-                </button>
-              ))}
-            </div>
-          </section>
-
           <section className="insight-card company-card">
             <div className="insight-heading">
               <div>
