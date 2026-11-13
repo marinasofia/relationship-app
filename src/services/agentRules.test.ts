@@ -58,3 +58,15 @@ describe("on-device evaluation", () => {
     expect(report.activity[0].summary).toBe("Followed up with Rosa Lee");
   });
 });
+
+describe("rules read back from storage", () => {
+  it("drops a saved rule whose settings would not pass the form's checks", () => {
+    const tampered = { id: "a", kind: "KEEP_IN_TOUCH", params: { cadenceDays: { toString: 1 }, contactIds: "c1" }, enabled: true };
+    expect(parseAgentRule(tampered)).toBeNull();
+  });
+
+  it("keeps a valid saved rule", () => {
+    const saved = { id: "b", kind: "KEEP_IN_TOUCH", params: { cadenceDays: 30, contactIds: ["c1"] }, enabled: true };
+    expect(parseAgentRule(saved)?.id).toBe("b");
+  });
+});

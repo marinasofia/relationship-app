@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AppProvider } from "./state/AppContext";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import "@fontsource/fraunces/400.css";
 import "@fontsource/fraunces/500.css";
 import "@fontsource/fraunces/600.css";
@@ -17,13 +18,15 @@ const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter basename={basename}>
-      <AppProvider mode="demo">
-        <div className="demo-ribbon" role="status">
-          <span>Demo with sample contacts. No account, no server.</span>
-        </div>
-        <App />
-      </AppProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter basename={basename}>
+        <AppProvider mode="demo">
+          <div className="demo-ribbon" role="status">
+            <span>Demo with sample contacts. No account, no server.</span>
+          </div>
+          <App />
+        </AppProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   </React.StrictMode>,
 );

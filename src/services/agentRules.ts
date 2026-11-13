@@ -91,6 +91,9 @@ export function validateRuleParams(kind: AgentRuleKind, params: Record<string, u
 
 export function parseAgentRule(value: unknown): AgentRule | null {
   if (!isRecord(value) || !str(value.id) || !KINDS.has(value.kind as AgentRuleKind) || !isRecord(value.params)) return null;
+  // Saved rules come back from browser storage, which anything on the same
+  // origin can write, so they get the same checks as a rule typed in the form.
+  if (validateRuleParams(value.kind as AgentRuleKind, value.params) !== null) return null;
   return {
     id: value.id, kind: value.kind as AgentRuleKind, params: value.params, enabled: value.enabled === true,
     createdAt: str(value.createdAt) ? value.createdAt : "", updatedAt: str(value.updatedAt) ? value.updatedAt : "",
