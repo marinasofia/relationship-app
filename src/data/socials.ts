@@ -22,7 +22,7 @@ export function socialUrl(s: Social): string {
       // ".../in/https://www.linkedin.com/in/slug". Reducing to the slug first
       // makes both forms open the same real profile.
       const slug = linkedinCanonicalSlug(s.handle) ?? s.handle.trim();
-      return `https://www.linkedin.com/in/${slug}`;
+      return `https://www.linkedin.com/in/${encodeURIComponent(slug)}`;
     }
     case "x":
       return `https://x.com/${encodeURIComponent(s.handle.trim().replace(/^@/, ""))}`;

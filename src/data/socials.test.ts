@@ -69,3 +69,14 @@ describe("socialUrl", () => {
     );
   });
 });
+
+describe("LinkedIn links from odd handles", () => {
+  it("keeps a handle that is not a slug inside the profile path", () => {
+    for (const handle of ["../../redir/redirect?url=https://evil.com", "x/../../../evil"]) {
+      const url = new URL(socialUrl({ type: "linkedin", handle }));
+      expect(url.host).toBe("www.linkedin.com");
+      expect(url.pathname.startsWith("/in/")).toBe(true);
+      expect(url.pathname.slice(4)).not.toContain("/");
+    }
+  });
+});
