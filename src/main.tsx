@@ -16,7 +16,18 @@ import "./styles/global.css";
 // This build only runs the demo: sample contacts in the browser, no account or server.
 const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || undefined;
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+// Pages cannot send frame-ancestors, so a framed copy never renders the app: it only offers to open it in its own tab.
+const framed = (() => { try { return window.self !== window.top; } catch { return true; } })();
+
+const root = ReactDOM.createRoot(document.getElementById("root")!);
+
+if (framed) {
+  root.render(
+    <p className="framed-notice">
+      This demo only runs in its own tab. <a href={window.location.href} target="_blank" rel="noopener noreferrer">Open it</a>
+    </p>,
+  );
+} else root.render(
   <React.StrictMode>
     <ErrorBoundary>
       <BrowserRouter basename={basename}>

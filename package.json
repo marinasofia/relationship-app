@@ -44,6 +44,7 @@
   "overrides": {
     "vitest": {
       "vite": "$vite"
-    }
+    },
+    "picomatch": "4.0.7"
   }
 }
