@@ -745,3 +745,9 @@ a:focus-visible,
   font-size: 13px;
   color: var(--muted);
 }
+
+.framed-notice {
+  margin: 2rem 1rem;
+  font: inherit;
+  text-align: center;
+}
