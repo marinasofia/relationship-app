@@ -59,14 +59,24 @@ function chatKey(owner: string | null, demo: boolean) {
   return `relapp.agent.chat.${demo ? "demo" : owner ?? "local"}`;
 }
 
+const isRecord = (v: unknown): v is Record<string, unknown> => !!v && typeof v === "object" && !Array.isArray(v);
+const validDraft = (d: unknown) => isRecord(d) && typeof d.id === "string" && typeof d.contactId === "string" && typeof d.body === "string";
+const validCard = (c: unknown) => isRecord(c) && typeof c.id === "string" && typeof c.kind === "string" && typeof c.title === "string" && typeof c.body === "string";
+
+// Session storage is user writable: keep drafts and cards only when every item has the fields the screen renders.
 function readChat(key: string): ChatEntry[] {
   try {
     const raw = window.sessionStorage.getItem(key);
     const parsed: unknown = raw ? JSON.parse(raw) : [];
-    return Array.isArray(parsed)
-      ? parsed.filter((m): m is ChatEntry => !!m && typeof m === "object"
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .filter((m): m is ChatEntry => isRecord(m)
         && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && typeof m.id === "string")
-      : [];
+      .map(({ drafts, cards, ...m }) => ({
+        ...m,
+        ...(Array.isArray(drafts) && drafts.every(validDraft) ? { drafts } : {}),
+        ...(Array.isArray(cards) && cards.every(validCard) ? { cards } : {}),
+      }));
   } catch { return []; }
 }
 

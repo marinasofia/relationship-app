@@ -26,8 +26,14 @@ const contentSecurityPolicy = (): Plugin => ({
 });
 
 // BASE_PATH lets the same build serve from a GitHub Pages project path.
+// It is written into the HTML, so only a plain path like /relationship-app/ is accepted.
+const base = process.env.BASE_PATH ?? "/";
+if (!/^\/[A-Za-z0-9._/-]*\/$|^\/$/.test(base) || base.includes("..")) {
+  throw new Error(`BASE_PATH must be a plain path like /relationship-app/, got ${JSON.stringify(base)}`);
+}
+
 export default defineConfig({
-  base: process.env.BASE_PATH ?? "/",
+  base,
   plugins: [react(), contentSecurityPolicy()],
   test: {
     environment: "node",

@@ -1,5 +1,5 @@
 import { X, Clock, Sparkles, Check } from "lucide-react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { useApp } from "../state/AppContext";
@@ -56,10 +56,7 @@ export function LiveEventScreen() {
   const lastNudge = useRef<ReactNode>(nudge);
   if (nudge !== null) lastNudge.current = nudge;
 
-  if (!event) {
-    navigate("/events");
-    return null;
-  }
+  if (!event) return <Navigate to="/events" replace />;
 
   const minutesLeft = Math.max(0, Math.ceil((end - now) / 60_000));
   const meta =
