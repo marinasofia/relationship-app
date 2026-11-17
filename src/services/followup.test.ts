@@ -4,9 +4,9 @@ import { makeContact } from "../test/factories";
 
 describe("student outreach templates", () => {
   it("uses a recorded meeting without inventing conversation details", async () => {
-    const draft = await draftFollowup(makeContact({ name: "Jordan Ellis", met: "TTPR meetup" }));
+    const draft = await draftFollowup(makeContact({ name: "Jordan Ellis", met: "Founders meetup" }));
     expect(draft).toContain("Jordan");
-    expect(draft).toContain("TTPR meetup");
+    expect(draft).toContain("Founders meetup");
     expect(draft).not.toContain("Ellis");
   });
   it("does not claim a meeting for a newly saved contact", async () => {
@@ -35,7 +35,7 @@ describe("mail handoff boundary", () => {
     expect(draftMailto(email, "Coffee", "Hi")).toBeNull();
   });
   it("keeps user-edited text in the body rather than mail headers", () => {
-    const url = new URL(draftMailto("student+ttpr@example.com", "Coffee & advice", "Hi\n&bcc=other@example.com")!);
+    const url = new URL(draftMailto("student+meetup@example.com", "Coffee & advice", "Hi\n&bcc=other@example.com")!);
     expect(url.searchParams.get("body")).toBe("Hi\n&bcc=other@example.com");
     expect(url.searchParams.get("bcc")).toBeNull();
     expect(url.searchParams.get("subject")).toBe("Coffee & advice");
