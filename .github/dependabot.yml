@@ -11,6 +11,10 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    # Major versions (React, Vite, TypeScript) need a deliberate upgrade, not a bot merge.
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
     groups:
       npm:
         patterns: ["*"]
